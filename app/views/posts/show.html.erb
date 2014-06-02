@@ -3,13 +3,15 @@
 <!--  Heeeeeeyyyyyyyyyyy rails below  -->
 
 <div>
-  <%= link_to @category.name, category_path %>
+  <%= link_to @category.name, category_path(@category) %>
 </div>
 
 <h2><%= @post.title %></h2>
 <dl>
   <dt>Price: </dt>
   <dd>$<%= @post.price %></dd>
+  <dt>Description: </dt>
+  <dd>$<%= @post.description %></dd>
   <dt>Contact: </dt>
   <dd><%= mail_to @post.email %></dd>
 </dl>
@@ -22,4 +24,3 @@
   <%= label_tag :key %>
   <%= text_field_tag :key %>
   <%= submit_tag "Edit post" %>
-<%# end %>

@@ -26,11 +26,12 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @category = Category.find_by_id(params[:category_id])
     @post = Post.find_by_id(params[:id])
 
 
     if @post.key != params[:key]
-      redirect [@category, @post]
+      redirect_to [@category, @post]
     end
   end
 
@@ -43,6 +44,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @category = Category.find_by_id(params[:category_id])
+    @post = Post.find_by_id(params[:id])
+    @post.destroy
+
+    redirect_to category_path
   end
 
   private

@@ -1,5 +1,7 @@
 <h2>Editing this post!</h2>
 
+<%= link_to @category.name, category_path %>
+
 <%= form_for @post, url: {action: "update"} do |f| %>
   <p>
     <%= f.label :title %>
@@ -19,3 +21,5 @@
   </p>
     <%= f.submit "Update This Post" %>
 <% end %>
+
+<%= link_to 'Delete This Post', [@category, @post], method: :delete, data: {confirm: "Are You Sure?"} %>
