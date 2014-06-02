@@ -14,7 +14,8 @@ class PostsController < ApplicationController
     @post.key = SecureRandom.hex(3)
     @post.save
 
-    redirect_to [@category, @post, :key => @post.key]
+    # redirect_to [@category, @post, :key => @post.key]
+      redirect_to category_post_path(@category.id, @post.id, :key => @post.key )
   end
 
   def show
@@ -31,7 +32,7 @@ class PostsController < ApplicationController
 
 
     if @post.key != params[:key]
-      redirect_to [@category, @post]
+      redirect_to category_post_path(@category.id, @post.id)
     end
   end
 
@@ -40,7 +41,7 @@ class PostsController < ApplicationController
     @post = Post.find_by_id(params[:id])
     @post.update_attributes(post_params)
 
-    redirect_to [@category, @post]
+    redirect_to category_post_path(@category.id, @post.id)
   end
 
   def destroy
