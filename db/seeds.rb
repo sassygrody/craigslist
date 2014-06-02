@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+10.times do
+  Category.create({:name => Faker::Lorem.word, :description => Faker::Lorem.sentence(word_count = 6)})
+end
+
+
+30.times do
+  Post.create({:category_id => [*1..10].sample, :email => Faker::Internet.email, :price => Faker::Commerce.price , :description => Faker::Lorem.sentence(word_count = 24), :title => Faker::Lorem.sentence(word_count = 8), :key=> SecureRandom.hex(3)})
+end
