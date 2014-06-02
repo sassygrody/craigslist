@@ -1,0 +1,9 @@
+<h2><%= @category.name %></h2>
+<p><%= @category.description %></p>
+
+<%= link_to 'New Post', [:new, @category, :post] %>
+<ul>
+  <%@posts.each do |post|%>
+  <li> <%= link_to post.title, [@category, post] %></li>
+  <% end %>
+</ul>

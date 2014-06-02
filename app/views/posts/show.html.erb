@@ -1,0 +1,25 @@
+
+
+<!--  Heeeeeeyyyyyyyyyyy rails below  -->
+
+<div>
+  <%= link_to @category.name, category_path %>
+</div>
+
+<h2><%= @post.title %></h2>
+<dl>
+  <dt>Price: </dt>
+  <dd>$<%= @post.price %></dd>
+  <dt>Contact: </dt>
+  <dd><%= mail_to @post.email %></dd>
+</dl>
+
+<%if @key %>
+  <p> Your post key is <%= @key %></p>
+<%end%>
+
+<%= form_tag(controller: "posts", action: "edit", method: "post")%>
+  <%= label_tag :key %>
+  <%= text_field_tag :key %>
+  <%= submit_tag "Edit post" %>
+<%# end %>
